@@ -1,7 +1,7 @@
 workflow:
   name:  ega-file-transfer-to-collab
   version: "0.6.0"
-  source_code: ""
+  source_code: "https://github.com/Chen2x/ega-file-transfer-to-collab-jt"
 
   runtime:
     docker: null
