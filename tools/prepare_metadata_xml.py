@@ -44,7 +44,7 @@ ega_metadata_repo = task_dict.get('input').get('ega_metadata_repo')
 task_start = int(time.time())
 
 try:
-    subprocess.check_output(['prepare_ega_xml_audit.py',
+    '''subprocess.check_output(['prepare_ega_xml_audit.py',
       '-i',ega_metadata_repo,
       '-p',project_code,
       '-o',output_file,
@@ -54,6 +54,8 @@ try:
       '-r',ega_run_id if ega_run_id else '',
       '-sa',ega_sample_id if ega_sample_id else '',
       '-st',ega_study_id if ega_study_id else ''])
+    '''
+    pass
 
 except Exception, e:
     with open('jt.log', 'w') as f: f.write(str(e))
