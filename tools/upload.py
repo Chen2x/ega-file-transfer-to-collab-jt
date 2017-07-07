@@ -64,6 +64,7 @@ try:
         #print subprocess.check_output(['aws', '--profile', 'collab', '--endpoint-url', 'https://object.cancercollaboratory.org:9080', 's3', 'cp', file_, os.path.join('s3://oicr.icgc.meta/metadata/', object_id)])
         os.remove(file_)
     #r = subprocess.check_output("%s -i %s -g %s -id %s -md5 %s" % (cmd, file_, bundle_id, object_id, file_md5sum), shell=True)
+    os.remove(file_)
 except Exception, e:
     with open('jt.log', 'w') as f: f.write(str(e))
     sys.exit(1)  # task failed
