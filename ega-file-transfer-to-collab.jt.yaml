@@ -1,6 +1,6 @@
 workflow:
   name:  ega-file-transfer-to-collab
-  version: "0.6.5"
+  version: "0.6.6"
   source_code: "https://github.com/Chen2x/ega-file-transfer-to-collab-jt"
 
   runtime:
@@ -83,18 +83,18 @@ workflow:
         ega_metadata_file_name: ega_metadata_file_name
       depends_on: null
 
-    xml_upload_to_aws:
-      tool: upload_to_aws
-      input:
-        bundle_id: bundle_id
-        object_id: ega_metadata_object_id  # this is the object_id obtained from ICGC service using bundle_id and ega_metadata_file_name as input
-        file: xml_file@prepare_metadata_xml
-        file_name: ega_metadata_file_name
-        file_size: xml_file_size@prepare_metadata_xml
-        file_md5sum: xml_file_md5sum@prepare_metadata_xml
-        project_code: project_code
-      depends_on:
-      - completed@prepare_metadata_xml
+#    xml_upload_to_aws:
+#      tool: upload_to_aws
+#      input:
+#        bundle_id: bundle_id
+#        object_id: ega_metadata_object_id  # this is the object_id obtained from ICGC service using bundle_id and ega_metadata_file_name as input
+#        file: xml_file@prepare_metadata_xml
+#        file_name: ega_metadata_file_name
+#        file_size: xml_file_size@prepare_metadata_xml
+#        file_md5sum: xml_file_md5sum@prepare_metadata_xml
+#        project_code: project_code
+#      depends_on:
+#      - completed@prepare_metadata_xml
 
     xml_file_upload:
       tool: upload
@@ -165,21 +165,21 @@ workflow:
 #          depends_on:
 #          - completed@decryption
 #          - completed@md5sum_check_decrypt
-        upload_to_aws:
-          tool: upload_to_aws
-          input:
-            file: file
-            file_name: ega_file.file_name
-            file_md5sum: file_md5sum@download
-            object_id: object_id@download
-            project_code: project_code
+#        upload_to_aws:
+#          tool: upload_to_aws
+#          input:
+#            file: file
+#            file_name: ega_file.file_name
+#            file_md5sum: file_md5sum@download
+#            object_id: object_id@download
+#            project_code: project_code
 
-            idx_file: idx_file
-            idx_file_name: idx_file_name
-            idx_object_id: idx_object_id
-            idx_file_md5sum: idx_file_md5sum
-          depends_on:
-          - completed@download
+#            idx_file: idx_file
+#            idx_file_name: idx_file_name
+#            idx_object_id: idx_object_id
+#            idx_file_md5sum: idx_file_md5sum
+#          depends_on:
+#          - completed@download
         upload:
           tool: upload
           input:
@@ -195,7 +195,7 @@ workflow:
             idx_file_size: idx_file_size
             idx_file_md5sum: idx_file_md5sum
           depends_on:
-          - completed@upload_to_aws
+          - completed@download
 
 
 # A workflow is made up with one or more tools
