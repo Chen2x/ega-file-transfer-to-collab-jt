@@ -46,4 +46,5 @@ output_json = {
 save_output_json(output_json)
 
 if task_info.startswith('Error'):
-    sys.exit(1)
+    pass
+    #sys.exit(1)
