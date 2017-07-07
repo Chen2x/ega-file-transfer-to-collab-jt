@@ -43,7 +43,7 @@ if project_code in allowed_codes:
         idx_file_size = int(os.path.getsize(idx_file_))
         try:
             #print subprocess.check_output(['icgc-storage-client', '--profile', 'aws', 'upload', '--file', idx_file_, '--object-id', idx_object_id, '--md5', idx_file_md5sum, '--force'])
-            print('printing')
+            pass
         except Exception, e:
             with open('jt.log', 'w') as f: f.write(str(e))
             sys.exit(1)  # task failed
