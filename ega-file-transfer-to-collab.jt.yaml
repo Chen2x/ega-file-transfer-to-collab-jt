@@ -1,6 +1,6 @@
 workflow:
   name:  ega-file-transfer-to-collab
-  version: "0.6.6"
+  version: "0.6.7"
   source_code: "https://github.com/Chen2x/ega-file-transfer-to-collab-jt"
 
   runtime:
@@ -68,20 +68,20 @@ workflow:
   #- completed@upload
 
   tasks:
-    prepare_metadata_xml:
-      tool: prepare_metadata_xml
-      input:
-        ega_metadata_repo: ega_metadata_repo
-        project_code: project_code
-        bundle_id: bundle_id
-        ega_study_id: ega_study_id
-        ega_dataset_id: ega_dataset_id
-        ega_sample_id: ega_sample_id
-        ega_analysis_id: ega_analysis_id
-        ega_experiment_id: ega_experiment_id
-        ega_run_id: ega_run_id
-        ega_metadata_file_name: ega_metadata_file_name
-      depends_on: null
+#    prepare_metadata_xml:
+#      tool: prepare_metadata_xml
+#      input:
+#        ega_metadata_repo: ega_metadata_repo
+#        project_code: project_code
+#        bundle_id: bundle_id
+#        ega_study_id: ega_study_id
+#        ega_dataset_id: ega_dataset_id
+#        ega_sample_id: ega_sample_id
+#        ega_analysis_id: ega_analysis_id
+#        ega_experiment_id: ega_experiment_id
+#        ega_run_id: ega_run_id
+#        ega_metadata_file_name: ega_metadata_file_name
+#      depends_on: null
 
 #    xml_upload_to_aws:
 #      tool: upload_to_aws
@@ -96,17 +96,17 @@ workflow:
 #      depends_on:
 #      - completed@prepare_metadata_xml
 
-    xml_file_upload:
-      tool: upload
-      input:
-        bundle_id: bundle_id
-        object_id: ega_metadata_object_id  # this is the object_id obtained from ICGC service using bundle_id and ega_metadata_file_name as input
-        file: xml_file@prepare_metadata_xml
-        file_name: ega_metadata_file_name
-        file_size: xml_file_size@prepare_metadata_xml
-        file_md5sum: xml_file_md5sum@prepare_metadata_xml
-      depends_on:
-      - completed@xml_upload_to_aws
+#    xml_file_upload:
+#      tool: upload
+#      input:
+#        bundle_id: bundle_id
+#        object_id: ega_metadata_object_id  # this is the object_id obtained from ICGC service using bundle_id and ega_metadata_file_name as input
+#        file: xml_file@prepare_metadata_xml
+#        file_name: ega_metadata_file_name
+#        file_size: xml_file_size@prepare_metadata_xml
+#        file_md5sum: xml_file_md5sum@prepare_metadata_xml
+#      depends_on:
+#      - completed@xml_upload_to_aws
 
 
     parallel_download:
@@ -180,22 +180,22 @@ workflow:
 #            idx_file_md5sum: idx_file_md5sum
 #          depends_on:
 #          - completed@download
-        upload:
-          tool: upload
-          input:
-            bundle_id: bundle_id
-            object_id: object_id  # this is the object_id obtained from ICGC service using bundle_id and ega_metadata_file_name as input
-            file: file
-            file_name: file_name
-            file_size: file_size
-            file_md5sum: file_md5sum
-            idx_object_id: idx_object_id  # this is the object_id obtained from ICGC service using bundle_id and ega_metadata_file_name as input
-            idx_file: idx_file
-            idx_file_name: idx_file_name
-            idx_file_size: idx_file_size
-            idx_file_md5sum: idx_file_md5sum
-          depends_on:
-          - completed@download
+#        upload:
+#          tool: upload
+#          input:
+#            bundle_id: bundle_id
+#            object_id: object_id  # this is the object_id obtained from ICGC service using bundle_id and ega_metadata_file_name as input
+#            file: file
+#            file_name: file_name
+#            file_size: file_size
+#            file_md5sum: file_md5sum
+#            idx_object_id: idx_object_id  # this is the object_id obtained from ICGC service using bundle_id and ega_metadata_file_name as input
+#            idx_file: idx_file
+#            idx_file_name: idx_file_name
+#            idx_file_size: idx_file_size
+#            idx_file_md5sum: idx_file_md5sum
+#          depends_on:
+#          - completed@download
 
 
 # A workflow is made up with one or more tools
