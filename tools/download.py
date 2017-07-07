@@ -40,13 +40,13 @@ try:
         r = subprocess.check_output(["touch", file_name])
         for i in range(1000):
             r = subprocess.check_output(["echo", str(randint(0,1000)), '>>', file_name])
-        os.remove(file_name)
+
     else:
         #r = subprocess.check_output(['download_ega_file.py','-p',project_code,'-f', ega_file_id+".aes", '-o', file_name])
         r = subprocess.check_output(["touch", file_name])
         for i in range(1000):
             r = subprocess.check_output(["echo", str(randint(0,1000)), '>>', file_name])
-        os.remove(file_name)
+
 except Exception, e:
     with open('jt.log', 'w') as f: f.write(str(e))
     sys.exit(1)  # task failed
