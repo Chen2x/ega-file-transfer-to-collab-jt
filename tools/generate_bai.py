@@ -32,8 +32,8 @@ task_start = int(time.time())
 # only invoke bai generation when the job has information of index file
 if idx_file_name and idx_object_id:
     try:
-        #subprocess.check_output(['generate_bai_from_bam.py','-i',bam_file,'-o',idx_file_name])
-        pass
+        subprocess.check_output(['touch',idx_file_name])
+        
     except Exception, e:
         with open('jt.log', 'w') as f: f.write(str(e))
         sys.exit(1)  # task failed
